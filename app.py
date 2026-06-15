@@ -178,49 +178,36 @@ else:
     Resultado: Operacion segura. El tanque no rebalsara.
     """)
 
-# ============================================================
-# SECCION DE MODELOS (NUEVO)
-# ============================================================
-
 st.markdown("---")
 st.subheader("Documentacion del Modelo")
 
-with st.expander("Modelo Conceptual (Dinamico y Estacionario)"):
+with st.expander("Modelo Conceptual"):
+    st.markdown("### 1. Modelo Dinamico")
     st.markdown("""
-    ### Modelo Dinamico
-    
-    El sistema se describe mediante un balance de masa en el tanque:
-    
-    """
-    )
+    El balance de masa en el tanque da lugar a la siguiente ecuacion diferencial ordinaria (ODE):
+    """)
     st.latex(r"A \frac{dL}{dt} = F_0 - F")
     st.markdown("""
-    donde el caudal de salida por gravedad sigue la ley de Torricelli:
-    """
-    )
+    Donde el caudal de salida por gravedad se modela con la siguiente ecuacion algebraica (AE):
+    """)
     st.latex(r"F = C_v \cdot f(x) \cdot \sqrt{\rho g L}")
     st.markdown("""
     Combinando ambas ecuaciones:
-    """
-    )
+    """)
     st.latex(r"A \frac{dL}{dt} = F_0 - C_v \cdot f(x) \cdot \sqrt{\rho g L}")
     
+    st.markdown("### 2. Modelo Estacionario")
     st.markdown("""
-    ### Modelo Estacionario
-    
-    En estado estacionario, el nivel no varia con el tiempo (dL/dt = 0):
-    """
-    )
+    En estado estacionario, la derivada temporal es cero (dL/dt = 0):
+    """)
     st.latex(r"F_0 = C_v \cdot f(x) \cdot \sqrt{\rho g L_{ss}}")
     st.markdown("""
     Despejando el nivel estacionario:
-    """
-    )
+    """)
     st.latex(r"L_{ss} = \frac{1}{\rho g} \left( \frac{F_0}{C_v \cdot f(x)} \right)^2")
     
+    st.markdown("### Variables del Modelo")
     st.markdown("""
-    ### Variables del Modelo
-    
     | Simbolo | Descripcion | Unidad |
     |---------|-------------|--------|
     | A | Area transversal del tanque | m² |
@@ -228,23 +215,23 @@ with st.expander("Modelo Conceptual (Dinamico y Estacionario)"):
     | F0 | Caudal de entrada | m³/s |
     | F | Caudal de salida | m³/s |
     | Cv | Coeficiente de valvula | - |
-    | f(x) | Caracteristica de valvula (0 a 1) | - |
+    | f(x) | Caracteristica de valvula | - |
     | rho | Densidad del fluido | kg/m³ |
-    | g | Aceleracion de la gravedad | m/s² |
-    | x | Apertura de la valvula | - |
+    | g | Gravedad | m/s² |
+    | x | Apertura de valvula | - |
     """)
 
-with st.expander("Modelo en Octave (descargable)"):
+with st.expander("Modelo en Octave"):
     st.markdown("""
-    El siguiente codigo en Octave implementa el mismo modelo de simulacion.
-    Para utilizarlo:
-    1. Copiar el codigo en un archivo con extension .m
-    2. Ejecutarlo en Octave o MATLAB
-    """
-    )
+    El siguiente codigo en Octave implementa el mismo modelo. Para utilizarlo:
+    1. Copiar el codigo
+    2. Guardarlo en un archivo con extension .m
+    3. Ejecutarlo en Octave o MATLAB
+    """)
     
-    codigo_octave = '''% Tanque con descarga gravitatoria
+    codigo_octave = '''% Simulacion de Tanque con Descarga Gravitatoria
 % Modelo dinamico y estacionario
+
 clear all; close all; clc;
 
 % Parametros del sistema
@@ -254,8 +241,7 @@ rho = 1000;         % Densidad (kg/m³)
 g = 9.81;           % Gravedad (m/s²)
 L0 = 1.0;           % Nivel inicial (m)
 L_max = 2.0;        % Nivel maximo (m)
-x0 = 0.5;           % Apertura inicial
-xf = 0.25;          % Apertura final
+xf = 0.25;          % Apertura de valvula
 Cv = 4.039e-5;      % Coeficiente de valvula
 
 % Caracteristica de valvula (lineal)
@@ -269,68 +255,79 @@ function F = caudal_salida(L, x, Cv, rho, g)
     F = Cv * f * sqrt(rho * g * max(L, 0.001));
 endfunction
 
-% Modelo dinamico (ODE)
-function dLdt = modelo_tanque(L, t, F0, A, x, Cv, rho, g)
-    F = caudal_salida(L, x, Cv, rho, g);
+% Modelo dinamico
+function dLdt = modelo_tanque(L, t, F0, A, xf, Cv, rho, g)
+    F = caudal_salida(L, xf, Cv, rho, g);
     dLdt = (F0 - F) / A;
 endfunction
 
-% Simulacion dinamica
+% Simulacion
 t = linspace(0, 1100, 1000);
 L = lsode(@(L,t) modelo_tanque(L,t,F0,A,xf,Cv,rho,g), L0, t);
 F = arrayfun(@(L) caudal_salida(L, xf, Cv, rho, g), L);
 
 % Graficos
-figure;
+figure('Position', [100, 100, 900, 400]);
+
 subplot(1,2,1);
 plot(t, L, 'b-', 'LineWidth', 2);
 hold on;
-yline(L_max, 'r--', 'L_max');
+yline(L_max, 'r--', 'LineWidth', 1.5);
 xlabel('Tiempo (s)');
 ylabel('Nivel L (m)');
-title('Evolucion del nivel');
+title('Evolucion del Nivel');
 grid on;
+legend('L(t)', 'L_{max}', 'Location', 'best');
 
 subplot(1,2,2);
 plot(t, F, 'r-', 'LineWidth', 2);
 hold on;
-yline(F0, 'g--', 'F0');
+yline(F0, 'g--', 'LineWidth', 1.5);
 xlabel('Tiempo (s)');
 ylabel('Caudal (m³/s)');
 title('Caudales');
 grid on;
+legend('F_{salida}', 'F_{entrada}', 'Location', 'best');
 
 % Analisis estacionario
 L_ss = (F0/(Cv * f_apertura(xf)))^2/(rho*g);
+fprintf('\\n=== RESULTADOS ===\\n');
 fprintf('Nivel estacionario teorico: %.2f m\\n', L_ss);
+fprintf('Nivel maximo permitido: %.2f m\\n', L_max);
 
 if L_ss > L_max
     fprintf('El tanque rebalsara\\n');
 else
     fprintf('El tanque no rebalsara\\n');
 endif
+
+if L(end) > L_max
+    fprintf('En la simulacion, el tanque rebalsa\\n');
+else
+    fprintf('En la simulacion, el tanque no rebalsa\\n');
+endif
 '''
     
     st.code(codigo_octave, language="octave")
     
-    # Boton para descargar el archivo .m
     st.download_button(
-        label="Descargar modelo_octave.m",
+        label="Descargar modelo_tanque.m",
         data=codigo_octave,
         file_name="modelo_tanque.m",
         mime="text/plain"
     )
 
-with st.expander("Ver detalles del modelo matematico (ecuaciones)"):
+with st.expander("Ecuaciones del Modelo Matematico"):
     st.latex(r"A \frac{dL}{dt} = F_0 - C_v \cdot f(x) \cdot \sqrt{\rho g L}")
     st.latex(r"L_{ss} = \frac{1}{\rho g} \left( \frac{F_0}{C_v \cdot f(x)} \right)^2")
     st.markdown("""
-    Donde:
+    **Variables:**
     - A = area del tanque (m²)
     - L = nivel del liquido (m)
     - F0 = caudal de entrada (m³/s)
-    - f(x) = funcion de caracteristica de la valvula (0 a 1)
+    - f(x) = funcion de caracteristica de la valvula
     - Cv_max = coeficiente de valvula a maxima apertura
     - rho = densidad del fluido (kg/m³)
     - g = gravedad (m/s²)
+    - x = apertura de la valvula
     """)
