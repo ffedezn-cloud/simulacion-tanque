@@ -178,7 +178,150 @@ else:
     Resultado: Operacion segura. El tanque no rebalsara.
     """)
 
-with st.expander("Ver detalles del modelo matematico"):
+# ============================================================
+# SECCION DE MODELOS (NUEVO)
+# ============================================================
+
+st.markdown("---")
+st.subheader("Documentacion del Modelo")
+
+with st.expander("Modelo Conceptual (Dinamico y Estacionario)"):
+    st.markdown("""
+    ### Modelo Dinamico
+    
+    El sistema se describe mediante un balance de masa en el tanque:
+    
+    """
+    )
+    st.latex(r"A \frac{dL}{dt} = F_0 - F")
+    st.markdown("""
+    donde el caudal de salida por gravedad sigue la ley de Torricelli:
+    """
+    )
+    st.latex(r"F = C_v \cdot f(x) \cdot \sqrt{\rho g L}")
+    st.markdown("""
+    Combinando ambas ecuaciones:
+    """
+    )
+    st.latex(r"A \frac{dL}{dt} = F_0 - C_v \cdot f(x) \cdot \sqrt{\rho g L}")
+    
+    st.markdown("""
+    ### Modelo Estacionario
+    
+    En estado estacionario, el nivel no varia con el tiempo (dL/dt = 0):
+    """
+    )
+    st.latex(r"F_0 = C_v \cdot f(x) \cdot \sqrt{\rho g L_{ss}}")
+    st.markdown("""
+    Despejando el nivel estacionario:
+    """
+    )
+    st.latex(r"L_{ss} = \frac{1}{\rho g} \left( \frac{F_0}{C_v \cdot f(x)} \right)^2")
+    
+    st.markdown("""
+    ### Variables del Modelo
+    
+    | Simbolo | Descripcion | Unidad |
+    |---------|-------------|--------|
+    | A | Area transversal del tanque | m² |
+    | L | Nivel del liquido | m |
+    | F0 | Caudal de entrada | m³/s |
+    | F | Caudal de salida | m³/s |
+    | Cv | Coeficiente de valvula | - |
+    | f(x) | Caracteristica de valvula (0 a 1) | - |
+    | rho | Densidad del fluido | kg/m³ |
+    | g | Aceleracion de la gravedad | m/s² |
+    | x | Apertura de la valvula | - |
+    """)
+
+with st.expander("Modelo en Octave (descargable)"):
+    st.markdown("""
+    El siguiente codigo en Octave implementa el mismo modelo de simulacion.
+    Para utilizarlo:
+    1. Copiar el codigo en un archivo con extension .m
+    2. Ejecutarlo en Octave o MATLAB
+    """
+    )
+    
+    codigo_octave = '''% Tanque con descarga gravitatoria
+% Modelo dinamico y estacionario
+clear all; close all; clc;
+
+% Parametros del sistema
+A = 0.785;          % Area del tanque (m²)
+F0 = 0.002;         % Caudal de entrada (m³/s)
+rho = 1000;         % Densidad (kg/m³)
+g = 9.81;           % Gravedad (m/s²)
+L0 = 1.0;           % Nivel inicial (m)
+L_max = 2.0;        % Nivel maximo (m)
+x0 = 0.5;           % Apertura inicial
+xf = 0.25;          % Apertura final
+Cv = 4.039e-5;      % Coeficiente de valvula
+
+% Caracteristica de valvula (lineal)
+function f = f_apertura(x)
+    f = x;
+endfunction
+
+% Caudal de salida
+function F = caudal_salida(L, x, Cv, rho, g)
+    f = f_apertura(x);
+    F = Cv * f * sqrt(rho * g * max(L, 0.001));
+endfunction
+
+% Modelo dinamico (ODE)
+function dLdt = modelo_tanque(L, t, F0, A, x, Cv, rho, g)
+    F = caudal_salida(L, x, Cv, rho, g);
+    dLdt = (F0 - F) / A;
+endfunction
+
+% Simulacion dinamica
+t = linspace(0, 1100, 1000);
+L = lsode(@(L,t) modelo_tanque(L,t,F0,A,xf,Cv,rho,g), L0, t);
+F = arrayfun(@(L) caudal_salida(L, xf, Cv, rho, g), L);
+
+% Graficos
+figure;
+subplot(1,2,1);
+plot(t, L, 'b-', 'LineWidth', 2);
+hold on;
+yline(L_max, 'r--', 'L_max');
+xlabel('Tiempo (s)');
+ylabel('Nivel L (m)');
+title('Evolucion del nivel');
+grid on;
+
+subplot(1,2,2);
+plot(t, F, 'r-', 'LineWidth', 2);
+hold on;
+yline(F0, 'g--', 'F0');
+xlabel('Tiempo (s)');
+ylabel('Caudal (m³/s)');
+title('Caudales');
+grid on;
+
+% Analisis estacionario
+L_ss = (F0/(Cv * f_apertura(xf)))^2/(rho*g);
+fprintf('Nivel estacionario teorico: %.2f m\\n', L_ss);
+
+if L_ss > L_max
+    fprintf('El tanque rebalsara\\n');
+else
+    fprintf('El tanque no rebalsara\\n');
+endif
+'''
+    
+    st.code(codigo_octave, language="octave")
+    
+    # Boton para descargar el archivo .m
+    st.download_button(
+        label="Descargar modelo_octave.m",
+        data=codigo_octave,
+        file_name="modelo_tanque.m",
+        mime="text/plain"
+    )
+
+with st.expander("Ver detalles del modelo matematico (ecuaciones)"):
     st.latex(r"A \frac{dL}{dt} = F_0 - C_v \cdot f(x) \cdot \sqrt{\rho g L}")
     st.latex(r"L_{ss} = \frac{1}{\rho g} \left( \frac{F_0}{C_v \cdot f(x)} \right)^2")
     st.markdown("""
