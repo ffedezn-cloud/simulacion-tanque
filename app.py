@@ -407,17 +407,4 @@ endif
         mime="text/plain"
     )
 
-with st.expander("Ecuaciones del Modelo Matematico"):
-    st.latex(r"A \frac{dL}{dt} = F_0 - C_v \cdot f(x) \cdot \sqrt{\rho g L}")
-    st.latex(r"L_{ss} = \frac{1}{\rho g} \left( \frac{F_0}{C_v \cdot f(x)} \right)^2")
-    st.markdown("""
-    **Variables:**
-    - A = area del tanque (m²)
-    - L = nivel del liquido (m)
-    - F0 = caudal de entrada (m³/s)
-    - f(x) = funcion de caracteristica de la valvula
-    - Cv_max = coeficiente de valvula a maxima apertura
-    - rho = densidad del fluido (kg/m³)
-    - g = gravedad (m/s²)
-    - x = apertura de la valvula
-    """)
+
