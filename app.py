@@ -1,4 +1,29 @@
-= st.number_input("Densidad del fluido rho (kg/m³)", value=1000.0, min_value=500.0, max_value=2000.0, step=10.0)
+import streamlit as st
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import odeint
+
+st.set_page_config(page_title="Simulador de Tanque Gravitatorio", layout="wide")
+
+st.title("Simulador de Tanque con Descarga Gravitatoria")
+st.markdown("---")
+
+with st.sidebar:
+    st.header("Datos Geometricos del Tanque")
+    D = st.number_input("Diametro del tanque D (m)", value=1.0, min_value=0.3, max_value=5.0, step=0.05)
+    A = np.pi * (D/2)**2
+    st.caption(f"Area calculada: {A:.4f} m²")
+    
+    L0 = st.number_input("Nivel inicial L0 (m)", value=1.0, min_value=0.0, max_value=5.0, step=0.05)
+    L_max = st.number_input("Nivel maximo (rebalse) L_max (m)", value=2.0, min_value=0.5, max_value=10.0, step=0.1)
+    
+    st.header("Datos de Operacion")
+    F0 = st.number_input("Caudal de entrada F0 (m³/s)", value=0.002, min_value=0.0001, max_value=0.1, format="%.5f")
+    x0 = st.slider("Apertura inicial de valvula x0", 0.0, 1.0, 0.5, 0.01)
+    xf = st.slider("Apertura final de valvula xf", 0.0, 1.0, 0.25, 0.01)
+    
+    st.header("Datos del Fluido")
+    rho = st.number_input("Densidad del fluido rho (kg/m³)", value=1000.0, min_value=500.0, max_value=2000.0, step=10.0)
     g = 9.81
     st.caption(f"Gravedad fija: g = {g} m/s²")
     
