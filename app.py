@@ -223,88 +223,178 @@ with st.expander("Modelo Conceptual"):
 
 with st.expander("Modelo en Octave"):
     st.markdown("""
-    El siguiente codigo en Octave implementa el mismo modelo. Para utilizarlo:
+    Codigo autocontenido para simular el tanque en Octave.
+    Para utilizarlo:
     1. Copiar el codigo
     2. Guardarlo en un archivo con extension .m
-    3. Ejecutarlo en Octave o MATLAB
+    3. Ejecutarlo en Octave
     """)
     
-    codigo_octave = '''% Simulacion de Tanque con Descarga Gravitatoria
+    codigo_octave = '''% Simulador de Tanque con Descarga Gravitatoria
 % Modelo dinamico y estacionario
+% Compatible con Octave
 
 clear all; close all; clc;
 
-% Parametros del sistema
-A = 0.785;          % Area del tanque (m²)
-F0 = 0.002;         % Caudal de entrada (m³/s)
-rho = 1000;         % Densidad (kg/m³)
-g = 9.81;           % Gravedad (m/s²)
-L0 = 1.0;           % Nivel inicial (m)
-L_max = 2.0;        % Nivel maximo (m)
-xf = 0.25;          % Apertura de valvula
-Cv = 4.039e-5;      % Coeficiente de valvula
+% =============== PARAMETROS DEL SISTEMA ===============
 
-% Caracteristica de valvula (lineal)
-function f = f_apertura(x)
-    f = x;
+% Geometria del tanque
+D = 1.0;                % Diametro (m)
+A = pi * (D/2)^2;       % Area (m²)
+L0 = 1.0;               % Nivel inicial (m)
+L_max = 2.0;            % Nivel maximo (rebalse) (m)
+
+% Operacion
+F0 = 2e-3;              % Caudal de entrada (m³/s)
+x0 = 0.5;               % Apertura inicial de valvula
+xf = 0.25;              % Apertura final de valvula
+
+% Fluido
+rho = 1000;             % Densidad (kg/m³)
+g = 9.81;               % Gravedad (m/s²)
+
+% Valvula
+tipo_valvula = "lineal";  % Opciones: "lineal", "isoporcentual", "apertura_rapida"
+R = 50;                   % Relacion de rango (para isoporcentual)
+
+% Simulacion
+t_final = 1100;         % Tiempo final (s)
+
+% =============== FUNCIONES DEL MODELO ===============
+
+% Funcion de apertura de valvula
+function f = f_apertura(x, tipo, R)
+    if strcmp(tipo, "lineal")
+        f = x;
+    elseif strcmp(tipo, "isoporcentual")
+        f = R^(x-1);
+    elseif strcmp(tipo, "apertura_rapida")
+        f = 1 - (1-x)^2;
+    else
+        f = x;
+    endif
 endfunction
 
 % Caudal de salida
-function F = caudal_salida(L, x, Cv, rho, g)
-    f = f_apertura(x);
-    F = Cv * f * sqrt(rho * g * max(L, 0.001));
+function F = caudal_salida(L, x, Cv_max, tipo, R, rho, g)
+    f = f_apertura(x, tipo, R);
+    L_seguro = max(L, 0.001);
+    F = Cv_max * f * sqrt(rho * g * L_seguro);
 endfunction
 
-% Modelo dinamico
-function dLdt = modelo_tanque(L, t, F0, A, xf, Cv, rho, g)
-    F = caudal_salida(L, xf, Cv, rho, g);
-    dLdt = (F0 - F) / A;
+% =============== CALCULO DE PARAMETROS DERIVADOS ===============
+
+f0 = f_apertura(x0, tipo_valvula, R);
+Cv_max = F0 / (f0 * sqrt(rho * g * L0));
+
+% =============== DEFINICION DE LA ODE PARA LSODE ===============
+
+global params
+params.F0 = F0;
+params.A = A;
+params.xf = xf;
+params.Cv_max = Cv_max;
+params.tipo = tipo_valvula;
+params.R = R;
+params.rho = rho;
+params.g = g;
+
+function dLdt = modelo_tanque(L, t)
+    global params
+    F = caudal_salida(L, params.xf, params.Cv_max, params.tipo, params.R, params.rho, params.g);
+    dLdt = (params.F0 - F) / params.A;
 endfunction
 
-% Simulacion
-t = linspace(0, 1100, 1000);
-L = lsode(@(L,t) modelo_tanque(L,t,F0,A,xf,Cv,rho,g), L0, t);
-F = arrayfun(@(L) caudal_salida(L, xf, Cv, rho, g), L);
+% =============== ANALISIS ESTACIONARIO ===============
 
-% Graficos
-figure('Position', [100, 100, 900, 400]);
+f_final = f_apertura(xf, tipo_valvula, R);
+L_ss = (F0 / (Cv_max * f_final))^2 / (rho * g);
+
+fprintf("\n========== ANALISIS ESTACIONARIO ==========\n");
+fprintf("Apertura final de valvula: xf = %.3f\n", xf);
+fprintf("Nivel estacionario teorico: L_ss = %.2f m\n", L_ss);
+fprintf("Nivel maximo permitido: L_max = %.2f m\n", L_max);
+
+if L_ss > L_max
+    fprintf("Resultado: El tanque REBALSARA en estado estacionario\n");
+else
+    fprintf("Resultado: El tanque NO rebalsara en estado estacionario\n");
+endif
+
+x_min = F0 / (Cv_max * sqrt(rho * g * L_max));
+fprintf("\nApertura minima para no rebalsar: x_min = %.4f\n", x_min);
+
+if xf < x_min
+    fprintf("ALERTA: La apertura actual (%.4f) es menor que la minima segura (%.4f)\n", xf, x_min);
+else
+    fprintf("OK: La apertura actual (%.4f) es mayor o igual que la minima segura (%.4f)\n", xf, x_min);
+endif
+
+% =============== SIMULACION DINAMICA ===============
+
+t = linspace(0, t_final, 1000);
+L = lsode(@modelo_tanque, L0, t);
+
+for i = 1:length(L)
+    F(i) = caudal_salida(L(i), xf, Cv_max, tipo_valvula, R, rho, g);
+endfor
+
+% =============== GRAFICOS ===============
+
+figure('Position', [100, 100, 1000, 450]);
 
 subplot(1,2,1);
 plot(t, L, 'b-', 'LineWidth', 2);
 hold on;
-yline(L_max, 'r--', 'LineWidth', 1.5);
+plot([t(1), t(end)], [L_max, L_max], 'r--', 'LineWidth', 1.5);
+plot([t(1), t(end)], [L0, L0], 'k:', 'LineWidth', 1);
 xlabel('Tiempo (s)');
 ylabel('Nivel L (m)');
-title('Evolucion del Nivel');
+title('Evolucion del nivel del tanque');
 grid on;
-legend('L(t)', 'L_{max}', 'Location', 'best');
+legend('L(t)', 'L_{max}', 'L_0', 'Location', 'northeast');
 
 subplot(1,2,2);
 plot(t, F, 'r-', 'LineWidth', 2);
 hold on;
-yline(F0, 'g--', 'LineWidth', 1.5);
+plot([t(1), t(end)], [F0, F0], 'g--', 'LineWidth', 1.5);
 xlabel('Tiempo (s)');
 ylabel('Caudal (m³/s)');
-title('Caudales');
+title('Caudales de entrada y salida');
 grid on;
-legend('F_{salida}', 'F_{entrada}', 'Location', 'best');
+legend('F_{salida}', 'F_{entrada}', 'Location', 'northeast');
 
-% Analisis estacionario
-L_ss = (F0/(Cv * f_apertura(xf)))^2/(rho*g);
-fprintf('\\n=== RESULTADOS ===\\n');
-fprintf('Nivel estacionario teorico: %.2f m\\n', L_ss);
-fprintf('Nivel maximo permitido: %.2f m\\n', L_max);
+% =============== DETECCION DE REBALSE ===============
 
-if L_ss > L_max
-    fprintf('El tanque rebalsara\\n');
+tiempo_rebalse = [];
+for i = 1:length(L)
+    if L(i) >= L_max
+        tiempo_rebalse = t(i);
+        break;
+    endif
+endfor
+
+fprintf("\n========== SIMULACION DINAMICA ==========\n");
+fprintf("Nivel final simulado: L_final = %.3f m\n", L(end));
+fprintf("Nivel maximo alcanzado: L_max_sim = %.3f m\n", max(L));
+
+if ~isempty(tiempo_rebalse)
+    fprintf("REBALSE DETECTADO: El tanque alcanza L_max = %.2f m en t = %.1f s\n", L_max, tiempo_rebalse);
 else
-    fprintf('El tanque no rebalsara\\n');
+    fprintf("NO HAY REBALSE durante los %.0f s de simulacion\n", t_final);
 endif
 
-if L(end) > L_max
-    fprintf('En la simulacion, el tanque rebalsa\\n');
+% =============== RESUMEN PARA EL OPERARIO ===============
+
+fprintf("\n========== RESUMEN PARA EL OPERARIO ==========\n");
+fprintf("Caudal de entrada: F0 = %.5f m³/s (%.2f L/s)\n", F0, F0*1000);
+fprintf("Area del tanque: A = %.4f m²\n", A);
+fprintf("Coeficiente de valvula: Cv_max = %.3e\n", Cv_max);
+fprintf("\nRECOMENDACION:\n");
+if xf < x_min
+    fprintf("Abrir la valvula al menos a x = %.4f para evitar el rebalse.\n", x_min);
 else
-    fprintf('En la simulacion, el tanque no rebalsa\\n');
+    fprintf("Operacion segura. Mantener la valvula en x = %.3f o superior.\n", x_min);
 endif
 '''
     
