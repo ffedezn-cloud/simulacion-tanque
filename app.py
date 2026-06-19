@@ -7,16 +7,9 @@ st.set_page_config(page_title="Simulador de Tanque Gravitatorio", layout="wide")
 
 st.title("Simulador de Tanque con Descarga Gravitatoria")
 # ====== IMAGEN DEL PROCESO  ======
-st.markdown(
-    """
-    <div style="text-align: center;">
-        <img src="diagrama_tanque.png" alt="Esquema del tanque" 
-             style="width: 70%; max-width: 700px; border: 1px solid #ddd; border-radius: 8px;">
-        <p style="font-size: 13px; color: #888; margin-top: 4px;">Esquema del tanque con descarga gravitatoria</p>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.image("diagrama_tanque.png", 
+         caption="Esquema del tanque con descarga gravitatoria", 
+         width=700)
 st.markdown("---")
 
 with st.sidebar:
