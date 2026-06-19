@@ -6,7 +6,7 @@ from scipy.integrate import odeint
 st.set_page_config(page_title="Simulador de Tanque Gravitatorio", layout="wide")
 
 st.title("Simulador de Tanque con Descarga Gravitatoria")
-st.image("diagrama_tanque.jpg", caption="Esquema del tanque con descarga gravitatoria", width=700)
+st.image("diagrama_tanque.jpg", caption="Esquema del tanque con descarga gravitatoria", width=400)
 st.markdown("---")
 
 with st.sidebar:
