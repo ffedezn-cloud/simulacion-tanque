@@ -9,7 +9,7 @@ st.title("Simulador de Tanque con Descarga Gravitatoria")
 # ====== IMAGEN DEL PROCESO  ======
 st.image("diagrama_tanque.png", 
          caption="Esquema del tanque con descarga gravitatoria", 
-         width=700)
+         width=450)
 st.markdown("---")
 
 with st.sidebar:
