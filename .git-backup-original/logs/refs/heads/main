@@ -1,0 +1,92 @@
+0000000000000000000000000000000000000000 546782d168270d5df4dda3cbb4f9384df162e40f Federico Franco <ffede.zn@gmail.com> 1785163307 -0300	clone: from github.com:ffedezn-cloud/simulacion-tanque.git
+546782d168270d5df4dda3cbb4f9384df162e40f ecf2c9925ffb6ad65e340fcc49934d013ea9be22 Federico Franco <ffede.zn@gmail.com> 1785185425 -0300	commit: Elimino icono de alado del correo
+ecf2c9925ffb6ad65e340fcc49934d013ea9be22 6fdec61a8d14ff559dc2794ddfc445f0e9f60eca Federico Franco <ffede.zn@gmail.com> 1785187923 -0300	commit: Se establece plantilla final
+6fdec61a8d14ff559dc2794ddfc445f0e9f60eca e28ba1b36117552380e41bb69bc296ab3b4ace04 Federico Franco <ffede.zn@gmail.com> 1785188300 -0300	commit: Corregido params
+e28ba1b36117552380e41bb69bc296ab3b4ace04 8982dac7b9a7d0bea66feeeddaa21e29a7a2a4a3 Federico Franco <ffede.zn@gmail.com> 1785189617 -0300	commit: Reestructuracion de la plantilla 1
+8982dac7b9a7d0bea66feeeddaa21e29a7a2a4a3 627fec2ba981dd874c32b4cd174273557dcf234a Federico Franco <ffede.zn@gmail.com> 1785190304 -0300	commit: Reestructuracion de la plantilla 2
+627fec2ba981dd874c32b4cd174273557dcf234a ee71baceb6f3e6a0c5780fa9400aae08fb26b5d1 Federico Franco <ffede.zn@gmail.com> 1785190712 -0300	commit: Reestructuracion de la plantilla 3
+ee71baceb6f3e6a0c5780fa9400aae08fb26b5d1 5c57711d903663962493176180867973b1cd7fea Federico Franco <ffede.zn@gmail.com> 1785191350 -0300	commit: Reestructuracion de la plantilla 4
+5c57711d903663962493176180867973b1cd7fea d8e361751be6ad8a2a89eee73418fe2a3aebfc2b Federico Franco <ffede.zn@gmail.com> 1785192375 -0300	commit: Reestructuracion de la plantilla 5
+d8e361751be6ad8a2a89eee73418fe2a3aebfc2b cdcfa02178188d5be67d8fe1f77a401667495ad8 Federico Franco <ffede.zn@gmail.com> 1785192501 -0300	pull --no-rebase: Merge made by the 'ort' strategy.
+cdcfa02178188d5be67d8fe1f77a401667495ad8 b4f26a6b6eef0b3d21df1cdcb27881f73dda0742 Federico Franco <ffede.zn@gmail.com> 1785193164 -0300	commit: Reestructuracion de la plantilla 5
+b4f26a6b6eef0b3d21df1cdcb27881f73dda0742 0fc34986dad097592e012a2e4ca8ba70df72b6f4 Federico Franco <ffede.zn@gmail.com> 1785193450 -0300	commit: Modificar modo oscuro de la pagina
+0fc34986dad097592e012a2e4ca8ba70df72b6f4 b2d4637ee9c38a00468deed5bd67582bfcd2924b Federico Franco <ffede.zn@gmail.com> 1785193524 -0300	commit: Modificacion de modo oscuro
+b2d4637ee9c38a00468deed5bd67582bfcd2924b bf4f8ed9e22e05b2c0baaf598a202e826dcd1d72 Federico Franco <ffede.zn@gmail.com> 1785193717 -0300	commit: Corregido modo oscuro
+bf4f8ed9e22e05b2c0baaf598a202e826dcd1d72 aba3bc13742244bdd01ce50d95460c905f535438 Federico Franco <ffede.zn@gmail.com> 1785194024 -0300	commit: corregido modo oscuro/claro
+aba3bc13742244bdd01ce50d95460c905f535438 aaef44ecb969bf15b1f3568e5411ef40ea58ec74 Federico Franco <ffede.zn@gmail.com> 1785194559 -0300	commit: Eliminar modo oscuro/claro
+aaef44ecb969bf15b1f3568e5411ef40ea58ec74 ec0fe4d71e4a462bbde8f227b9c5aa8ce2ccb516 Federico Franco <ffede.zn@gmail.com> 1785201419 -0300	commit: Se agrega modelo conceptual
+ec0fe4d71e4a462bbde8f227b9c5aa8ce2ccb516 4e869edeed0824dec55d1e529047e1ea38607a5f Federico Franco <ffede.zn@gmail.com> 1785201680 -0300	commit: Corregido formato modelo conceptual
+4e869edeed0824dec55d1e529047e1ea38607a5f cf86e16b15a8b077109125fed7be6f7536582a6f Federico Franco <ffede.zn@gmail.com> 1785202046 -0300	commit: Modificado formato del modelo conceptual
+cf86e16b15a8b077109125fed7be6f7536582a6f c6dba8aa69f9d38ca76cd596312709dc5c9ca958 Federico Franco <ffede.zn@gmail.com> 1785202192 -0300	commit: Modificado xf por xfin
+c6dba8aa69f9d38ca76cd596312709dc5c9ca958 e188167b9dd3d8a7c2e5b70e72d4b991354307a5 Federico Franco <ffede.zn@gmail.com> 1785600482 -0300	commit: Reemplazar Modelo conceptual por modelo_conceptual.pdf y actualizar app.py
+e188167b9dd3d8a7c2e5b70e72d4b991354307a5 e63e5d1944074606e6f31834dd4b97712644152b Federico Franco <ffede.zn@gmail.com> 1785600559 -0300	commit: Agregar plotly a requirements.txt
+e63e5d1944074606e6f31834dd4b97712644152b 545a3bfde6e25a1dd67b833eb35b95aed66d2eef Federico Franco <ffede.zn@gmail.com> 1785600697 -0300	commit: modificado curvas inherentes
+545a3bfde6e25a1dd67b833eb35b95aed66d2eef 1168d96e851f4db16017827eb57f70a4edca32ab Federico Franco <ffede.zn@gmail.com> 1785629102 -0300	commit: mejora en aspecto
+1168d96e851f4db16017827eb57f70a4edca32ab a48f7d210b1aec4d63663cbe09a7e371b08c2dbe Federico Franco <ffede.zn@gmail.com> 1785629407 -0300	commit: formato Freecodecamp
+a48f7d210b1aec4d63663cbe09a7e371b08c2dbe 427a45db81c2ec161b808cfa180e4f65102b863b Federico Franco <ffede.zn@gmail.com> 1785635284 -0300	commit: corregir aspecto
+427a45db81c2ec161b808cfa180e4f65102b863b 7d6ae6b19db98af26f468088f4cf28420c446dc7 Federico Franco <ffede.zn@gmail.com> 1785635565 -0300	commit: modificado
+7d6ae6b19db98af26f468088f4cf28420c446dc7 2848ab4a3d41f084ea81f32207286c14d2245d7b Federico Franco <ffede.zn@gmail.com> 1785635666 -0300	commit: volver al inicio
+2848ab4a3d41f084ea81f32207286c14d2245d7b ef4dae666ab9c7849b52a3ca6818deb9e05d19fc Federico Franco <ffede.zn@gmail.com> 1785636040 -0300	commit: corregido
+ef4dae666ab9c7849b52a3ca6818deb9e05d19fc bc5a28ec9dce8350c3efe0d730d4df76f0793ff8 Federico Franco <ffede.zn@gmail.com> 1785636343 -0300	commit: corregido temas
+bc5a28ec9dce8350c3efe0d730d4df76f0793ff8 92e414a15b9aa31e9a19b673b44a32be3c3d5d89 Federico Franco <ffede.zn@gmail.com> 1785636873 -0300	commit: corregido aspecto
+92e414a15b9aa31e9a19b673b44a32be3c3d5d89 17f4cffafe5e5ddeed06d429f8a8ee9491dd355f Federico Franco <ffede.zn@gmail.com> 1785637253 -0300	commit: estilo ajustado
+17f4cffafe5e5ddeed06d429f8a8ee9491dd355f 72d7b950b32b1bffaa713b105990c30b954c0576 Federico Franco <ffede.zn@gmail.com> 1785637585 -0300	commit: modificado
+72d7b950b32b1bffaa713b105990c30b954c0576 d4a9aa48579b92c5033997d62e10a0d03e2fef23 Federico Franco <ffede.zn@gmail.com> 1785637875 -0300	commit: aspecto mejorado
+d4a9aa48579b92c5033997d62e10a0d03e2fef23 d9c11aa2d66b4b587257319b7d722781d3e2336a Federico Franco <ffede.zn@gmail.com> 1785638093 -0300	commit: cambios realizados
+d9c11aa2d66b4b587257319b7d722781d3e2336a 846e2ebfa1ebe7ad42933361f462f1839dfc4943 Federico Franco <ffede.zn@gmail.com> 1785638394 -0300	commit: a ver ahi
+846e2ebfa1ebe7ad42933361f462f1839dfc4943 f30dba1fb0a1abcc6c3ae6b46a715123aac394b2 Federico Franco <ffede.zn@gmail.com> 1785638581 -0300	commit: restaurar
+f30dba1fb0a1abcc6c3ae6b46a715123aac394b2 2e34dc63ceaf0bdb8eb32b7f3a77204d63acf0db Federico Franco <ffede.zn@gmail.com> 1785638920 -0300	commit: mejoras
+2e34dc63ceaf0bdb8eb32b7f3a77204d63acf0db 9efa6f4a9f6b673077dca0bbbcaf5caf0ff6c37f Federico Franco <ffede.zn@gmail.com> 1785639119 -0300	commit: cambios
+9efa6f4a9f6b673077dca0bbbcaf5caf0ff6c37f 07de8561b8976180e4b6a41587eaafa823f5ab8d Federico Franco <ffede.zn@gmail.com> 1785639169 -0300	commit: restaurar
+07de8561b8976180e4b6a41587eaafa823f5ab8d 6aa8c6a744b5c7e0c2dd66a085c821486c5b5bc4 Federico Franco <ffede.zn@gmail.com> 1785639369 -0300	commit: ver
+6aa8c6a744b5c7e0c2dd66a085c821486c5b5bc4 6b4a583d3208ef240c5ba42bb8ab692c48e98ed5 Federico Franco <ffede.zn@gmail.com> 1785639407 -0300	commit: a ver
+6b4a583d3208ef240c5ba42bb8ab692c48e98ed5 4df44c875f97c2a19a240ada87a45ac0154340e0 Federico Franco <ffede.zn@gmail.com> 1785639864 -0300	commit: a ver
+4df44c875f97c2a19a240ada87a45ac0154340e0 710c607bd1ddb88435fa629902e0ec07d0c9c635 Federico Franco <ffede.zn@gmail.com> 1785640255 -0300	commit: a ver
+710c607bd1ddb88435fa629902e0ec07d0c9c635 c47842beb532d9dc4f9ea630f31b96f02821577e Federico Franco <ffede.zn@gmail.com> 1785640335 -0300	commit: aver
+c47842beb532d9dc4f9ea630f31b96f02821577e 321830e0e6669f7ce23ca5870d9e37652069d607 Federico Franco <ffede.zn@gmail.com> 1785640357 -0300	commit: aver
+321830e0e6669f7ce23ca5870d9e37652069d607 28781bf222bed0a2a79ec3886cfd0d055f58a4f0 Federico Franco <ffede.zn@gmail.com> 1785640751 -0300	commit: miau
+28781bf222bed0a2a79ec3886cfd0d055f58a4f0 e244583dd98feab463dc45ce452abd6f4125b6ed Federico Franco <ffede.zn@gmail.com> 1785641018 -0300	commit: aver
+e244583dd98feab463dc45ce452abd6f4125b6ed 06b38a9fe61940235fe16edeb0215c24dcf16e21 Federico Franco <ffede.zn@gmail.com> 1785641291 -0300	commit: corregido
+06b38a9fe61940235fe16edeb0215c24dcf16e21 11df583320822e860ad222b14266629e111eb6a7 Federico Franco <ffede.zn@gmail.com> 1785641582 -0300	commit: corregir
+11df583320822e860ad222b14266629e111eb6a7 b57a8f38d07afb43911a64d048ab3b4a92cc2f53 Federico Franco <ffede.zn@gmail.com> 1785641909 -0300	commit: a ver
+b57a8f38d07afb43911a64d048ab3b4a92cc2f53 c5f913c89941cab8663f915e23f1cd15a53e84c0 Federico Franco <ffede.zn@gmail.com> 1785642108 -0300	commit: a ver
+c5f913c89941cab8663f915e23f1cd15a53e84c0 0fe224aaff2b5a71359d446b793b560244af0291 Federico Franco <ffede.zn@gmail.com> 1785642174 -0300	commit: sigo mañana
+0fe224aaff2b5a71359d446b793b560244af0291 06da6a9f23ec2f5598868d2d831e0251ed1d69eb Federico Franco <ffede.zn@gmail.com> 1785682488 -0300	commit: volver a las bases
+06da6a9f23ec2f5598868d2d831e0251ed1d69eb a44dbfc69cdfd1eae7057a6d38702895ac731680 Federico Franco <ffede.zn@gmail.com> 1785683702 -0300	commit: modificar
+a44dbfc69cdfd1eae7057a6d38702895ac731680 e39074d9f4faf544649799ddd60ac79821105d92 Federico Franco <ffede.zn@gmail.com> 1785684031 -0300	commit: a ver
+e39074d9f4faf544649799ddd60ac79821105d92 671a61c67b4a4db2c1f10014f0e7bd882657d6bb Federico Franco <ffede.zn@gmail.com> 1785684344 -0300	commit: veamos
+671a61c67b4a4db2c1f10014f0e7bd882657d6bb c40b64d96494741a3efe5fc4d91f398558ff99c7 Federico Franco <ffede.zn@gmail.com> 1785684406 -0300	commit: volve
+c40b64d96494741a3efe5fc4d91f398558ff99c7 080dea04fec4fb6536f207912888631371b69a32 Federico Franco <ffede.zn@gmail.com> 1785684556 -0300	commit: aver ahi
+080dea04fec4fb6536f207912888631371b69a32 c0fdfb98c33ab5cfa9eb880da1fedd9ae0e18d48 Federico Franco <ffede.zn@gmail.com> 1785685632 -0300	commit: Mejora visual: agregados estilos CSS personalizados tipo gcastano
+c0fdfb98c33ab5cfa9eb880da1fedd9ae0e18d48 e36b120d880b819de5a94b28a6976e8abe430410 Federico Franco <ffede.zn@gmail.com> 1785685800 -0300	commit: porqueria
+e36b120d880b819de5a94b28a6976e8abe430410 4b92b9f3a39d332417eb7f1f7876aa0104e5f662 Federico Franco <ffede.zn@gmail.com> 1785686108 -0300	commit: a ver
+4b92b9f3a39d332417eb7f1f7876aa0104e5f662 5fa1a4aac6d57a76a96fab3ccaedd5e0a4103aa1 Federico Franco <ffede.zn@gmail.com> 1785686333 -0300	commit: a ver
+5fa1a4aac6d57a76a96fab3ccaedd5e0a4103aa1 1e2b26087376bd0bebef00cd534f1e14a7b15f20 Federico Franco <ffede.zn@gmail.com> 1785694672 -0300	commit: Revert: eliminar personalización CSS, volver a versión básica
+1e2b26087376bd0bebef00cd534f1e14a7b15f20 3a366eb6e17b3549243119b25bf70139355444e0 Federico Franco <ffede.zn@gmail.com> 1785694836 -0300	commit (merge): Resuelto conflicto: mantener versión básica de app.py sin CSS
+3a366eb6e17b3549243119b25bf70139355444e0 780f9b3b09507e2c604b2edd397cab8775cfbf5d Federico Franco <ffede.zn@gmail.com> 1785696203 -0300	commit: Aplicado estilo portfolio al simulador
+780f9b3b09507e2c604b2edd397cab8775cfbf5d 76c8c42a6c49494b9e88a8e811d911c40d384dc7 Federico Franco <ffede.zn@gmail.com> 1785696596 -0300	commit: corregido contenido
+76c8c42a6c49494b9e88a8e811d911c40d384dc7 e98b7d5db510dff5a4096de312b69526167dd529 Federico Franco <ffede.zn@gmail.com> 1785697119 -0300	commit: modificado
+e98b7d5db510dff5a4096de312b69526167dd529 60755ce9853515485694adb557bb7b0b5e46da06 Federico Franco <ffede.zn@gmail.com> 1785697745 -0300	commit: miau
+60755ce9853515485694adb557bb7b0b5e46da06 b49508f48c308154338e3ffd585d05ca513c3748 Federico Franco <ffede.zn@gmail.com> 1785697956 -0300	commit: volver
+b49508f48c308154338e3ffd585d05ca513c3748 b1d6110523437b56946af49c18839871d9adc9cc Federico Franco <ffede.zn@gmail.com> 1785698449 -0300	commit: Eliminar carpeta .streamlit para usar selector de temas nativo de Streamlit
+b1d6110523437b56946af49c18839871d9adc9cc 7106c98bd37021010af9ead9c5cd6aaf96c1bd02 Federico Franco <ffede.zn@gmail.com> 1785698773 -0300	commit: Fix: eliminar .streamlit y agregar soporte para tema oscuro nativo
+7106c98bd37021010af9ead9c5cd6aaf96c1bd02 f1b9d0596b696abf2faa282e2c11bd453f052e6e Federico Franco <ffede.zn@gmail.com> 1785699317 -0300	commit: a ver
+f1b9d0596b696abf2faa282e2c11bd453f052e6e fd67d96f8f92c7ceabc817e5c793694abb8d1390 Federico Franco <ffede.zn@gmail.com> 1785699534 -0300	commit: a ver
+fd67d96f8f92c7ceabc817e5c793694abb8d1390 c961d187d753c6ad588102dbf1ff967f0abeed73 Federico Franco <ffede.zn@gmail.com> 1785700073 -0300	commit: Fix: eliminar CSS de sliders y corregir funciones estacionarias
+c961d187d753c6ad588102dbf1ff967f0abeed73 eed2028cfd008c6cfebcede23a2e814de00cfba3 Federico Franco <ffede.zn@gmail.com> 1785700756 -0300	commit: arreglado palabra rápida
+eed2028cfd008c6cfebcede23a2e814de00cfba3 cd01192dad4a7d5f63c4ba9d5e688d3069d769e7 Federico Franco <ffede.zn@gmail.com> 1785701940 -0300	commit: cambios
+cd01192dad4a7d5f63c4ba9d5e688d3069d769e7 a44f0330699c06a0f57c962963650f307774a881 Federico Franco <ffede.zn@gmail.com> 1785702124 -0300	commit: mejoras de graficas
+a44f0330699c06a0f57c962963650f307774a881 b415b4b1192cc03449a5f4e61460cb08c3346535 Federico Franco <ffede.zn@gmail.com> 1785702241 -0300	commit: corregido título parámetros
+b415b4b1192cc03449a5f4e61460cb08c3346535 5980f0669f486968673297fcbfad09d2a91c7f7a Federico Franco <ffede.zn@gmail.com> 1785702992 -0300	commit: a ver
+5980f0669f486968673297fcbfad09d2a91c7f7a fcda8e15b6235a068a6cf954b3ff5167cfe65bd2 Federico Franco <ffede.zn@gmail.com> 1785703246 -0300	commit: a ver
+fcda8e15b6235a068a6cf954b3ff5167cfe65bd2 3d980bc1096c179a21248489fe1d318c23c59972 Federico Franco <ffede.zn@gmail.com> 1785703333 -0300	commit: aver
+3d980bc1096c179a21248489fe1d318c23c59972 4fcd12ab8c9e8a6cab717b059d3fc7faf5c24e9f Federico Franco <ffede.zn@gmail.com> 1785703608 -0300	commit: cambiado nombre graficas
+4fcd12ab8c9e8a6cab717b059d3fc7faf5c24e9f fe10989f62290d0d6765f86b0a7c3cbdc8052732 Federico Franco <ffede.zn@gmail.com> 1785795671 -0300	commit: 📝 README: versión final con formato corregido
+fe10989f62290d0d6765f86b0a7c3cbdc8052732 896bbbaa1e816be3a7fc13722452d9ee08b7138a Federico Franco <ffede.zn@gmail.com> 1785795719 -0300	commit: 🧹 Limpieza: archivos movidos a assets/
+896bbbaa1e816be3a7fc13722452d9ee08b7138a 8d1a74c48c01e3eaa6ff4882df6db16ca588009d Federico Franco <ffede.zn@gmail.com> 1785795719 -0300	filter-branch: rewrite
+8d1a74c48c01e3eaa6ff4882df6db16ca588009d 6f787e3c67a0dd6f1749d2de7c32efb763d615e3 Federico Franco <ffede.zn@gmail.com> 1785797023 -0300	commit: README: eliminar emojis de badges y texto
+6f787e3c67a0dd6f1749d2de7c32efb763d615e3 b22af4cb44c9ec5f006eb67a522466ec1b93d9ad Federico Franco <ffede.zn@gmail.com> 1785797161 -0300	commit: README: corregir formato de títulos
+b22af4cb44c9ec5f006eb67a522466ec1b93d9ad e63aa2330f2641d0638e4547f7e5e29ede8360e7 Federico Franco <ffede.zn@gmail.com> 1785797412 -0300	commit: README: agregar Octave como tecnologia utilizada
+e63aa2330f2641d0638e4547f7e5e29ede8360e7 d661221f0d3d61a1c3b76f20973e93598d538399 Federico Franco <ffede.zn@gmail.com> 1785797502 -0300	commit: README: agregar Octave como tecnologia utilizada
+d661221f0d3d61a1c3b76f20973e93598d538399 879e5b1cbad735e0ba0939b2ccc2edbdfefdae34 Federico Franco <ffede.zn@gmail.com> 1785797720 -0300	commit: LICENSE: licencia modificada
+879e5b1cbad735e0ba0939b2ccc2edbdfefdae34 ceeb283d147db0d1a7f9780dc96c18f2db2c1a41 Federico Franco <ffede.zn@gmail.com> 1785799871 -0300	commit: ubicación de archivos actualizada
